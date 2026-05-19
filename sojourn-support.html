@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Sojourn</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #1D9E75;
+      --teal-light: #E1F5EE;
+      --teal-dark:  #0f6e50;
+      --text:       #1a1a1a;
+      --muted:      #595959;
+      --border:     #e0e0e0;
+      --bg:         #ffffff;
+      --bg-alt:     #f9fafb;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--teal);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+    header .logo { font-size: 2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    header .tagline { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 0.25rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    header .hero-text { font-size: 1.5rem; font-weight: 700; color: #fff; margin-top: 1.5rem; }
+    header .hero-sub { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-top: 0.4rem; }
+
+    /* ── Layout ── */
+    .container { max-width: 780px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    /* ── Section headings ── */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--teal-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2 .icon { font-size: 1.2rem; }
+
+    h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin: 1.4rem 0 0.4rem; }
+
+    p { margin-bottom: 0.9rem; color: var(--muted); }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { color: var(--muted); margin-bottom: 0.5rem; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Feature cards (workflows) ── */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .workflow-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .workflow-card .card-icon { font-size: 1.75rem; margin-bottom: 0.6rem; }
+    .workflow-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .workflow-card p { font-size: 0.875rem; color: var(--muted); margin: 0; }
+
+    /* ── Steps ── */
+    .steps { list-style: none; padding: 0; margin: 0.75rem 0 1.25rem; }
+    .steps li {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      margin-bottom: 0.85rem;
+      color: var(--muted);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+
+    /* ── FAQ accordion (CSS only) ── */
+    .faq { margin: 0.75rem 0 1.5rem; }
+    .faq details {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      background: var(--bg-alt);
+      overflow: hidden;
+    }
+    .faq summary {
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: var(--text);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--teal); font-size: 1.2rem; font-weight: 400; }
+    .faq details[open] summary::after { content: "−"; }
+    .faq details[open] summary { border-bottom: 1px solid var(--border); }
+    .faq .answer { padding: 0.85rem 1rem; font-size: 0.9rem; color: var(--muted); }
+
+    /* ── Bug report form ── */
+    .bug-form {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .form-row { margin-bottom: 1rem; }
+    label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--teal-dark); text-decoration: none; }
+
+    /* ── Contact banner ── */
+    .contact-banner {
+      background: var(--teal);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .contact-banner p { color: rgba(255,255,255,0.85); margin: 0.25rem 0 1rem; }
+    .contact-banner h3 { color: #fff; margin: 0 0 0.4rem; font-size: 1.1rem; }
+    .contact-banner a.email-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--teal);
+      font-weight: 700;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .contact-banner a.email-btn:hover { opacity: 0.9; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--teal); }
+
+    @media (max-width: 520px) {
+      .workflow-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🌍 Sojourn</div>
+  <div class="tagline">Plan. Discover. Remember.</div>
+  <div class="hero-text">How can we help?</div>
+  <div class="hero-sub">Guides, workflows, and bug reporting — all in one place.</div>
+</header>
+
+<div class="container">
+
+  <!-- ── FEATURE OVERVIEW ── -->
+  <h2><span class="icon">✦</span> What Sojourn Can Do</h2>
+  <p>Sojourn is your family's all-in-one travel companion — built to help you plan before the trip, discover during it, and remember it long after you're home.</p>
+
+  <div class="workflow-grid">
+    <div class="workflow-card">
+      <div class="card-icon">🗺️</div>
+      <h4>Plan</h4>
+      <p>Build a day-by-day storyboard for your trip. Add activities, meals, travel, and must-dos — organized by date with times and categories.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="card-icon">📷</div>
+      <h4>Discover</h4>
+      <p>Drop a pin on spontaneous finds — a hidden beach, a great taco stand — with a photo and note. Builds a live map of your trip as you go.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="card-icon">📖</div>
+      <h4>Journal</h4>
+      <p>Write a few lines each day. Sojourn prompts you with a question to spark the memory and saves each entry tied to that exact trip day.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="card-icon">✦</div>
+      <h4>AI Planner</h4>
+      <p>Ask the built-in AI assistant things like "Top 10 things to do in El Salvador" and tap to add suggestions directly to your itinerary.</p>
+    </div>
+  </div>
+
+
+  <!-- ── HOW TO: CREATE A TRIP ── -->
+  <h2><span class="icon">🗺️</span> How to Create a Trip</h2>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Open Sojourn and tap the <strong>+ button</strong> in the top right of the Home screen.</li>
+    <li><span class="step-num">2</span> Enter your <strong>trip name</strong> (e.g. "Family Trip to El Salvador") and <strong>destination</strong>.</li>
+    <li><span class="step-num">3</span> Choose an <strong>emoji icon</strong> that represents your trip.</li>
+    <li><span class="step-num">4</span> Set your <strong>start and end dates</strong>.</li>
+    <li><span class="step-num">5</span> Tap <strong>Add</strong> — your trip appears on the Home screen and is ready to plan.</li>
+  </ol>
+
+
+  <!-- ── HOW TO: PLAN TAB ── -->
+  <h2><span class="icon">📋</span> How to Plan Your Itinerary</h2>
+
+  <h3>Adding activities manually</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Tap your trip from the Home screen to open it.</li>
+    <li><span class="step-num">2</span> You'll land on the <strong>Plan tab</strong>. Tap a day in the strip at the top to select it.</li>
+    <li><span class="step-num">3</span> Tap the <strong>+ button</strong> in the top right, or tap <strong>Add manually</strong> on the empty state screen.</li>
+    <li><span class="step-num">4</span> Enter a title, optional details, and pick a <strong>category</strong> (Food, Activity, Travel, Stay, Must-do, or Note).</li>
+    <li><span class="step-num">5</span> Optionally set a <strong>time</strong> for the activity and tap <strong>Add</strong>.</li>
+  </ol>
+
+  <h3>Using the AI Planner</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> On the Plan tab, tap the <strong>✦ AI button</strong> in the top right toolbar.</li>
+    <li><span class="step-num">2</span> Type a prompt like <em>"Top 10 things to do in El Salvador"</em> or tap one of the quick idea chips.</li>
+    <li><span class="step-num">3</span> The AI returns up to 8 suggestions with details and categories.</li>
+    <li><span class="step-num">4</span> Tap the <strong>+ icon</strong> on any suggestion to add it directly to that day's timeline. Tap <strong>Add all</strong> to add everything at once.</li>
+  </ol>
+
+  <h3>Editing or completing an activity</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Tap any activity on the timeline to open the edit sheet.</li>
+    <li><span class="step-num">2</span> Update the title, details, category, or time and tap <strong>Save</strong>.</li>
+    <li><span class="step-num">3</span> To mark it done, tap the <strong>circle checkbox</strong> on the right side of the activity row.</li>
+    <li><span class="step-num">4</span> To delete it, open the edit sheet and tap <strong>Delete activity</strong> at the bottom.</li>
+  </ol>
+
+
+  <!-- ── HOW TO: DISCOVER ── -->
+  <h2><span class="icon">📍</span> How to Use Discover</h2>
+
+  <h3>Adding a spot</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Open your trip and tap the <strong>Discover tab</strong>.</li>
+    <li><span class="step-num">2</span> Tap the <strong>+ button</strong> or the dashed <strong>Add spot</strong> card in the grid.</li>
+    <li><span class="step-num">3</span> Tap the photo area to pick an image from your library.</li>
+    <li><span class="step-num">4</span> Enter a <strong>place name</strong> and a short <strong>caption</strong> about the experience.</li>
+    <li><span class="step-num">5</span> Toggle <strong>Use my current location</strong> on to auto-pin your GPS coordinates.</li>
+    <li><span class="step-num">6</span> Tap <strong>Add</strong> — the spot appears in your photo grid and on the map.</li>
+  </ol>
+
+  <h3>Sharing a spot to Instagram</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Tap a spot card to open the detail view.</li>
+    <li><span class="step-num">2</span> Tap the <strong>camera icon</strong> in the top right toolbar.</li>
+    <li><span class="step-num">3</span> If Instagram is installed, it opens Instagram Stories with your photo pre-loaded. If not, the iOS share sheet opens instead.</li>
+  </ol>
+
+
+  <!-- ── HOW TO: JOURNAL ── -->
+  <h2><span class="icon">✍️</span> How to Use the Journal</h2>
+
+  <h3>Writing an entry</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Open your trip and tap the <strong>Journal tab</strong>.</li>
+    <li><span class="step-num">2</span> Tap the <strong>Write today's entry</strong> card at the top, or tap the pencil icon in the toolbar.</li>
+    <li><span class="step-num">3</span> Give your entry a <strong>title</strong> and pick a <strong>mood</strong> (Excited, Happy, Funny, etc.).</li>
+    <li><span class="step-num">4</span> Write freely in the body area. Tap a <strong>writing prompt chip</strong> at the bottom if you need a nudge.</li>
+    <li><span class="step-num">5</span> Tap <strong>Save</strong> — the entry is stored tied to that day of your trip.</li>
+  </ol>
+
+  <h3>Reading or editing a past entry</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> Tap any entry card in the Journal tab to open it in full.</li>
+    <li><span class="step-num">2</span> Tap the <strong>pencil icon</strong> in the top right to edit the title, body, or mood.</li>
+    <li><span class="step-num">3</span> To delete, scroll to the bottom of the edit sheet and tap <strong>Delete entry</strong>.</li>
+  </ol>
+
+
+  <!-- ── HOW TO: SHARING & DELETING TRIPS ── -->
+  <h2><span class="icon">🔗</span> Sharing and Deleting Trips</h2>
+
+  <h3>Sharing a trip</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> On the Home screen, swipe <strong>left</strong> on any trip card.</li>
+    <li><span class="step-num">2</span> Tap the teal <strong>Share</strong> button.</li>
+    <li><span class="step-num">3</span> The iOS share sheet opens with the message: <em>"I planned a trip for us to [destination]! Check it out on the Sojourn app on the App Store."</em></li>
+    <li><span class="step-num">4</span> Choose Messages, Mail, AirDrop, or any app to share.</li>
+  </ol>
+
+  <h3>Deleting a trip</h3>
+  <ol class="steps">
+    <li><span class="step-num">1</span> On the Home screen, swipe <strong>left</strong> on the trip card you want to remove.</li>
+    <li><span class="step-num">2</span> Tap the red <strong>Delete</strong> button.</li>
+    <li><span class="step-num">3</span> A confirmation dialog appears — tap <strong>Delete trip</strong> to confirm. This permanently removes the trip and all its plans, spots, and journal entries.</li>
+  </ol>
+
+
+  <!-- ── FAQ ── -->
+  <h2><span class="icon">💬</span> Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <details>
+      <summary>Will my trips sync across multiple devices?</summary>
+      <div class="answer">Currently, Sojourn stores all data locally on your device using Apple's SwiftData framework. iCloud sync across devices is planned for a future update.</div>
+    </details>
+
+    <details>
+      <summary>Does the AI Planner require an internet connection?</summary>
+      <div class="answer">Yes — the AI Planner sends your prompt to Claude's API to generate suggestions, so an active internet connection is required for that feature. All other app features (planning, journaling, discover) work fully offline.</div>
+    </details>
+
+    <details>
+      <summary>How do I change the app to dark mode?</summary>
+      <div class="answer">Tap the appearance icon in the top left of the Home screen. It cycles through three modes: System (follows your iPhone settings), Light, and Dark. Your preference is saved and remembered across launches.</div>
+    </details>
+
+    <details>
+      <summary>Can I add photos to journal entries?</summary>
+      <div class="answer">Photo attachments for journal entries are coming in a future update. Right now, photos are supported in the Discover tab when logging a spot.</div>
+    </details>
+
+    <details>
+      <summary>I deleted a trip by accident — can I recover it?</summary>
+      <div class="answer">Unfortunately, deleted trips cannot be recovered at this time. We recommend using the confirmation dialog carefully before deleting. Trip backup and restore is a planned future feature.</div>
+    </details>
+
+    <details>
+      <summary>Why does the AI Planner say it can't connect?</summary>
+      <div class="answer">This usually means there's no internet connection, or the AI service is temporarily unavailable. Check your connection and try again. If the problem persists, please report it using the bug form below.</div>
+    </details>
+
+    <details>
+      <summary>How do I request access to or delete my account data?</summary>
+      <div class="answer">You can submit a data request at any time using the link in our <a href="sojourn-privacy-policy.html">Privacy Policy</a>, or email us directly at <a href="mailto:dakota.lowery89@icloud.com">dakota.lowery89@icloud.com</a>.</div>
+    </details>
+  </div>
+
+
+  <!-- ── BUG REPORT ── -->
+  <h2><span class="icon">🐛</span> Report a Bug</h2>
+  <p>Found something that isn't working right? We want to know. Fill in as much detail as you can — it helps us fix things faster.</p>
+
+  <div class="bug-form">
+    <div class="form-row">
+      <label for="name">Your name</label>
+      <input type="text" id="name" placeholder="Dakota" />
+    </div>
+
+    <div class="form-row">
+      <label for="email">Email address <span style="color:var(--teal)">*</span></label>
+      <input type="email" id="email" placeholder="you@example.com" />
+      <p class="form-hint">We'll only use this to follow up on your report.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="area">Which part of the app?</label>
+      <select id="area">
+        <option value="">— Select —</option>
+        <option>Home screen</option>
+        <option>Plan tab</option>
+        <option>Discover tab</option>
+        <option>Journal tab</option>
+        <option>AI Planner</option>
+        <option>Sign in / Sign up</option>
+        <option>Share sheet</option>
+        <option>Dark / Light mode</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="severity">How severe is it?</label>
+      <select id="severity">
+        <option value="">— Select —</option>
+        <option>🔴 App crashes or won't open</option>
+        <option>🟠 Feature completely broken</option>
+        <option>🟡 Something looks wrong or behaves oddly</option>
+        <option>🟢 Minor visual glitch or typo</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="steps">Steps to reproduce the bug</label>
+      <textarea id="steps" placeholder="1. Open the app&#10;2. Tap the Plan tab&#10;3. Tap + to add an activity&#10;4. The app closes unexpectedly"></textarea>
+      <p class="form-hint">The more detail you include, the faster we can track it down.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="expected">What did you expect to happen?</label>
+      <textarea id="expected" placeholder="The activity should have been saved to the timeline." style="min-height:80px;"></textarea>
+    </div>
+
+    <div class="form-row">
+      <label for="device">Device and iOS version (optional)</label>
+      <input type="text" id="device" placeholder="e.g. iPhone 15 Pro, iOS 17.4" />
+    </div>
+
+    <!-- mailto fallback since this is a static page -->
+    <a class="submit-btn" href="mailto:dakota.lowery89@icloud.com?subject=Sojourn Bug Report&body=Area: %0D%0A%0D%0ASeverity: %0D%0A%0D%0ASteps to reproduce: %0D%0A%0D%0AExpected behavior: %0D%0A%0D%0ADevice/iOS: ">
+      📨 Send Bug Report
+    </a>
+    <p class="form-hint" style="margin-top:0.6rem;">Tapping the button opens a pre-filled email. Fill in your details and hit send.</p>
+  </div>
+
+
+  <!-- ── CONTACT ── -->
+  <div class="contact-banner">
+    <h3>Still need help?</h3>
+    <p>We're a small team and we read every message. Expect a reply within 1–2 business days.</p>
+    <a href="mailto:dakota.lowery89@icloud.com" class="email-btn">✉ dakota.lowery89@icloud.com</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Sojourn: Plan. Discover. Remember.</p>
+  <p style="margin-top:0.4rem;">
+    <a href="sojourn-privacy-policy.html">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:dakota.lowery89@icloud.com">Contact Us</a>
+  </p>
+</footer>
+
+</body>
+</html>
+EOF
