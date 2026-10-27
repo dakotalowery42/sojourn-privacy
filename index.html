@@ -186,7 +186,7 @@
 
   <div class="page-title">
     <h1>Privacy Policy</h1>
-    <div class="date">Last updated: May 19, 2026</div>
+    <div class="date">Last updated: October 27, 2026</div>
   </div>
 
   <p>This Privacy Notice for <strong>Sojourn: Plan. Discover. Remember.</strong> ("we," "us," or "our") describes how and why we might access, collect, store, use, and/or share your personal information when you use our services, including when you:</p>
@@ -198,7 +198,7 @@
   <p><strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you have any questions or concerns, please contact us at <a href="mailto:dakota.lowery89@icloud.com">dakota.lowery89@icloud.com</a>.</p>
 
   <div class="summary-box">
-    <p><strong>Summary:</strong> Sojourn is designed with your privacy in mind. All trip data, journal entries, photos, and discovered spots are stored locally on your device and are never uploaded to our servers. We do not sell your data, run ads, or share your information with third parties for marketing purposes.</p>
+    <p><strong>Summary:</strong> Sojourn is designed with your privacy in mind. Account and trip records use Google Firebase for sign-in, syncing and existing shared features. New private memory and journal photos are protected on your device; optional private iCloud recovery copies are off by default. Public/shared spot photos and legacy cloud media retain their existing cloud behavior. Account-linked crash diagnostics help us fix app failures. We do not sell your data, run ads, or share your information with third parties for marketing purposes.</p>
   </div>
 
   <!-- TOC -->
@@ -229,14 +229,20 @@
   <ul>
     <li>Names</li>
     <li>Email addresses</li>
+    <li>Account user identifiers and profile details</li>
+    <li>Trip destinations, dates, reservations, notes, sharing settings and other content you choose to save or share</li>
   </ul>
-  <p><strong>Sensitive Information.</strong> We do not process sensitive information.</p>
+  <p><strong>Account and location information.</strong> Authentication information and precise saved-place coordinates are processed to provide the features you request. Location permission is optional, and saved locations require confirmation.</p>
 
   <h3>Application Data</h3>
   <p>If you use our application, we may collect the following information if you choose to provide us with access or permission:</p>
   <ul>
-    <li><em>Geolocation Information.</em> We may request access or permission to track location-based information from your mobile device to provide location-based services (such as pinning discovered spots on a map). If you wish to change our access or permissions, you may do so in your device's settings.</li>
-    <li><em>Photos.</em> We may request access to your photo library to allow you to attach photos to discovered spots. Photos are stored locally on your device only.</li>
+    <li><em>Location.</em> Optional device location helps you locate or confirm a place. Saved spots may include precise coordinates and place/city labels linked to your trip account. Apple Maps receives searches and requested place lookups. Searching, saving, or booking never automatically marks a place visited.</li>
+    <li><em>Photos and content.</em> The system photo picker or camera lets you attach selected photos. New private map, journal and solo-trip photos are saved in an account-scoped device library outside the trip cache. Public/shared spot photos may upload to Firebase Storage when you choose to share. Legacy Firebase photo links and copies remain for existing records and recovery. Journal text, photo identity metadata, existing cloud audio, reservations and shared trip content retain their account sync behavior. Private preparation/clothing records remain device-only.</li>
+    <li><em>Optional private iCloud protection.</em> If enabled in Account → Photos &amp; backup, photos and associated captions, visit dates, locations and source identifiers are copied into Sojourn's private iCloud Drive app container using your Apple Account's storage. This is recovery protection, not a public feed or complete trip database sync. It is off by default, scoped to your Sojourn and Apple accounts, and requires review before restore. Uploads depend on connectivity, available storage and system scheduling; queued uploads are not a confirmed backup. Disabling protection stops new attempts but does not remove existing copies; explicit cleanup is available. Historical recovery revisions remain until scoped cleanup.</li>
+    <li><em>Diagnostics.</em> Firebase Crashlytics receives crash reports and associated device/app information. The signed-in account identifier is attached to help diagnose failures and cleared from new reports at sign-out. This is app functionality, not advertising tracking.</li>
+    <li><em>Apple intelligence and imports.</em> Supported AI features use Apple's on-device Foundation Models, subject to device/model/language availability. This release does not send prompts to Anthropic or OpenAI and does not accept provider API keys. Screenshot text recognition runs on-device and feeds an editable review step; it does not upload the screenshot. Manual travel features remain available without AI.</li>
+    <li><em>Travel confirmations and integrations.</em> Existing connected Gmail/iCloud mailbox searches occur only when requested; connection credentials and reviewed confirmations are account-scoped device Keychain data. Mail connections are not added to social trip payloads. Optional sharing, Maps directions, Siri, widgets and notifications use the content needed for the chosen action. Widgets use a bounded local App Group snapshot cleared at account changes.</li>
   </ul>
   <p>All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.</p>
 
@@ -246,8 +252,8 @@
   <p>We process your personal information for the following reasons:</p>
   <ul>
     <li><strong>To facilitate account creation and authentication.</strong> We may process your information so you can create and log in to your account.</li>
-    <li><strong>To provide core app features.</strong> Trip planning, discovery pins, and journal entries are processed locally on your device.</li>
-    <li><strong>To deliver AI-powered suggestions.</strong> When you use the AI Planner feature, your prompt text is sent to Anthropic's API to generate travel suggestions. This is not linked to your personal identity.</li>
+    <li><strong>To provide core app features.</strong> Local records and account-scoped Firebase records provide trip planning, memories, reservations and existing shared features. Optional private iCloud copies support reviewed recovery.</li>
+    <li><strong>To deliver AI-powered suggestions.</strong> Supported Apple intelligence features process the chosen trip context on eligible devices. No external AI-provider prompt transmission occurs in this release.</li>
   </ul>
 
   <!-- 3 -->
@@ -257,12 +263,12 @@
   <ul>
     <li><strong>Business Transfers.</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
   </ul>
-  <p>We have not sold or shared any personal information to third parties for a business or commercial purpose. We will not sell or share personal information in the future belonging to app users and consumers.</p>
+  <p>We do not sell personal information or share it for targeted advertising. Service processing includes Google Firebase Authentication, Firestore, Storage and Crashlytics; Apple Maps and optional iCloud Drive; and existing user-requested mailbox connections. Shared/public content is visible according to the sharing choices you make. External sharing sends the content you explicitly choose to its destination. Affiliate links may earn a commission; partners receive information you choose to provide after opening their service, under their own policies.</p>
 
   <!-- 4 -->
   <h2 id="inforetain">4. How Long Do We Keep Your Information?</h2>
   <p><em>In Short: We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.</em></p>
-  <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law. No purpose in this notice will require us keeping your personal information for longer than the period of time in which users have an account with us.</p>
+  <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law. Device recovery copies survive sign-out and trip-cache eviction until scoped cleanup. Device-only photos can be lost if the app is deleted or the device is lost; use optional iCloud recovery copies or explicit Files exports to protect them. Historical recovery copies are not a live deletion mirror.</p>
   <p>When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or securely store your personal information and isolate it from any further processing until deletion is possible.</p>
 
   <!-- 5 -->
@@ -282,7 +288,7 @@
 
   <h3>Account Information</h3>
   <p>If you would at any time like to review or change the information in your account or terminate your account, you can log in to your account settings and update your user account.</p>
-  <p>Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.</p>
+  <p>Account → Delete account removes app-managed account data through client cleanup and an authoritative Firebase account-deletion cascade, including stored cloud media. It also clears scoped device originals and app-managed private iCloud recovery copies under the bound Apple Account. If that Apple Account is unavailable, the app reports the cleanup issue rather than claiming success. Files exports, other-device offline copies and user-managed device backups remain under your control and are not remotely erased by the app. You can also explicitly remove iCloud recovery copies while retaining device originals.</p>
   <p>If you have questions or comments about your privacy rights, you may email us at <a href="mailto:dakota.lowery89@icloud.com">dakota.lowery89@icloud.com</a>.</p>
 
   <!-- 8 -->
@@ -306,12 +312,12 @@
       <tr>
         <td>A. Identifiers</td>
         <td>Name, email address, account name</td>
-        <td class="collected-no">NO</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>B. Personal information (CA Records statute)</td>
         <td>Name, contact information, financial information</td>
-        <td class="collected-no">NO</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>C. Protected classification characteristics</td>
@@ -321,7 +327,7 @@
       <tr>
         <td>D. Commercial information</td>
         <td>Transaction information, purchase history</td>
-        <td class="collected-no">NO</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>E. Biometric information</td>
@@ -330,18 +336,18 @@
       </tr>
       <tr>
         <td>F. Internet or network activity</td>
-        <td>Browsing history, search history, online behavior</td>
-        <td class="collected-no">NO</td>
+        <td>Crash diagnostics and device/app information; not cross-app advertising tracking</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>G. Geolocation data</td>
-        <td>Device location (stored locally only)</td>
-        <td class="collected-no">NO</td>
+        <td>User-confirmed saved-place coordinates and destination labels</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>H. Audio, electronic, sensory information</td>
         <td>Images and audio recordings</td>
-        <td class="collected-no">NO</td>
+        <td class="collected-yes">YES</td>
       </tr>
       <tr>
         <td>I. Professional or employment-related information</td>
@@ -360,8 +366,8 @@
       </tr>
       <tr>
         <td>L. Sensitive personal information</td>
-        <td>—</td>
-        <td class="collected-no">NO</td>
+        <td>Account authentication and precise saved-place coordinates used for requested app features</td>
+        <td class="collected-yes">YES</td>
       </tr>
     </tbody>
   </table>
